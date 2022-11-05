@@ -1,7 +1,8 @@
 class CustomerService {
     constructor() {
-        this.customers = [
-          {
+        this.nextId = 4;
+        this.customers = 
+        [{
             id: 1,
             name: "Svetlana",
             surname: "Marinkovic",
@@ -38,6 +39,13 @@ class CustomerService {
     
         return true
       }
+
+      create(newCustomer) {
+        this.customers.push({id: this.nextId, ...newCustomer});
+        this.nextId++;
+
+        return this.customers[this.customers.length-1];
+    }
 }
 
 export default new CustomerService()
