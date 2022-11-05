@@ -25,7 +25,7 @@ class CustomerService {
       }
 
       getId(id) {
-        return this.customers.find((customer) => customer.id === id)
+        return this.customers.find(customer => customer.id === Number(id))
       }
 
       delete(id) {
