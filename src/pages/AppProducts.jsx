@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
+import SingleProductComponent from '../components/SingleProductComponent';
+import ProductService from '../service/ProductService'
 
 const AppProducts = () => {
+  const [products, setProducts] = useState(ProductService.getAll());
+
   return (
     <div>
-      <h1>Procucts</h1>
+      <h1>Products:</h1>
+      {products.map((product) => (
+        <SingleProductComponent 
+          name={product.name}
+        />
+      ))}
     </div>
   )
 }
