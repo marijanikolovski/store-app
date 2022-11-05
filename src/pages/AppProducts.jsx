@@ -8,6 +8,24 @@ const AppProducts = () => {
 
   const productFiltering = products.filter(product => product.name.toLowerCase().startsWith(search.toLowerCase()))
 
+  const increment = (id) => {
+    const index = products.findIndex((product) => product.id === id)
+    const newCount = ProductService.countIncrement(id);
+
+    setProducts(
+      [...products.slice(0, index), {...products[index], count: newCount}, ...products.slice(index + 1)]
+    )
+  }
+
+  const decrement = (id) => {
+    const index = products.findIndex((product) => product.id === id)
+    const newCount = ProductService.countDecrement(id);
+
+    setProducts(
+      [...products.slice(0, index), {...products[index], count: newCount}, ...products.slice(index + 1)]
+    )
+  }
+
   return (
     <div>
       <h1>Products:</h1>
@@ -16,8 +34,11 @@ const AppProducts = () => {
       {productFiltering.map((product) => (
         <SingleProductComponent 
           key={product.id}
+          id={product.id}
           name={product.name}
           count={product.count}
+          increment={increment}
+          decrement={decrement}
         />
       ))}
     </div>
