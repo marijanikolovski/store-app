@@ -1,9 +1,8 @@
 import React from 'react'
 import {Redirect, useParams} from 'react-router-dom'
 import CustomerService from '../service/CustomerService';
-import ProductService from '../service/ProductService';
 
-const LatestPurchasesComponent = ({ products }) => {
+const LatestPurchasesComponent = () => {
     const {id} = useParams();
 
     const customer = CustomerService.getId(id);
@@ -19,9 +18,9 @@ const LatestPurchasesComponent = ({ products }) => {
             <p>Surname: {customer.surname}</p>
             <h3>List of products:</h3>
             <ul>
-                {products ? 
+                {customer.products.length > 0 ? 
                     customer.products.map((product) => (
-                        <li>{product.name}</li>
+                        <li key={product.id}>{product.name}</li>
                 )) : 'There are no products'}
             </ul>
         </div>

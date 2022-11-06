@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom'
 import LatestPurchasesComponent from './components/LatestPurchasesComponent'
 import AppCustomers from './pages/AppCustomers'
 import AppProducts from './pages/AppProducts'
+import BuyProductComponent from './components/BuyProductComponent'
 
 const Router = () => {
   return (
@@ -11,12 +12,16 @@ const Router = () => {
         <Route exact path='/customers'>
             <AppCustomers />
         </Route>
-        <Route path='/products'>
+        <Route exact path='/products'>
             <AppProducts />
         </Route>
         <Route path='/customers/:id'>
             <LatestPurchasesComponent />
         </Route>
+        <Route path='/products/:id'>
+            <BuyProductComponent />
+        </Route>
+
       </Switch>
     </div>
   )

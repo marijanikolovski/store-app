@@ -21,10 +21,8 @@ class ProductService {
       return [...this.products];
     }
   
-    get(id) {
-      const product = this.products.find((prod) => prod.id === Number(id));
-  
-      return product ? {...product} : null
+    getId(id) {
+      return this.products.find(product => product.id === Number(id))
     }
 
     countIncrement(id) {

@@ -6,16 +6,19 @@ class CustomerService {
             id: 1,
             name: "Svetlana",
             surname: "Marinkovic",
+            products: []
           },
           {
             id: 2,
             name: "Judmila",
             surname: "Spasic",
+            products: []
           },
           {
             id: 3,
             name: "Persida",
             surname: "Boskovic",
+            products: []
           },
         ];
       }  
@@ -46,6 +49,12 @@ class CustomerService {
 
         return this.customers[this.customers.length-1];
     }
+
+      addProduct(id, product) {
+        const index = this.customers.findIndex((customer) => customer.id === Number(id));
+        
+        this.customers[index].products.push({...product})
+      }
 }
 
 export default new CustomerService()
